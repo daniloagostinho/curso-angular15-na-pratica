@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { ContinuationRegisterComponent } from '../continuation-register/continuation-register.component';
 import { UtilsService } from 'src/app/services/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private apiService: ApiService,
     private localStorageService: LocalstorageService,
-    private utilService: UtilsService) {
+    private utilService: UtilsService,
+    private router: Router) {
 
   }
 
@@ -64,10 +66,14 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.localStorageService.setLocalStorage('token', token)
           this.localStorageService.setLocalStorage('user', email)
           this.utilService.showSucces('Login realizado com sucesso!')
+          this.navigateUrl('dashboard')
         })
     }
   }
 
+  navigateUrl(url: string) {
+    this.router.navigate([`/${url}`])
+  }
   isValidForm(): boolean {
     return this.formLogin.valid;
   }
