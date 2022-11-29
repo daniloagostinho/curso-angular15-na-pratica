@@ -13,7 +13,8 @@
           <mat-card class="custom-style-card">
             <mat-tab-group>
               <mat-tab label="ENTRAR">
-                <form>
+                <form [formGroup]="formLogin"
+                (ngSubmit)="login()">
                   <div class="input-group mb-3">
                     <input
                       type="email"
@@ -21,6 +22,7 @@
                       placeholder="E-mail"
                       aria-label="email"
                       aria-describedby="email"
+                      formControlName="email"
                     />
                   </div>
 
@@ -31,13 +33,15 @@
                       placeholder="Senha"
                       aria-label="password"
                       aria-describedby="password"
+                      formControlName="password"
                     />
                   </div>
 
                   <div class="d-grid gap-2">
                     <button
                       class="btn btn-primary btn-login"
-                      type="submit">
+                      type="submit"
+                      [disabled]="formLogin.invalid">
                       ENTRAR
                     </button>
                   </div>

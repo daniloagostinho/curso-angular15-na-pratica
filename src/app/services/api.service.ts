@@ -1,9 +1,10 @@
 import { RegisterUser } from './../interfaces/registerUser';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, retry, throwError } from 'rxjs';
 import { enviremonent } from 'src/enviremonents/enviremonent';
 import { UtilsService } from './utils.service';
+import { LoginUser } from '../interfaces/loginUser';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,23 @@ export class ApiService {
       })
     )
 
+  }
 
+  loginUser(user: any): Observable<LoginUser> {
+
+    return this.httpClient.post<LoginUser>(enviremonent.BASE_URL + '/auth/login', user)
+      .pipe(
+        retry(2),
+        catchError((err) => {
+          if(err.status === 0 && err.status !== 404) {
+            this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
+          } else if(err.status === 404) {
+            this.utilsService.showError(err.error.message)
+          } else {
+            this.utilsService.showError('Ocorreu um erro no servidor, tente mais tarde!')
+          }
+          return throwError(() => err)
+        })
+      )
   }
 }
