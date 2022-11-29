@@ -1,0 +1,107 @@
+<div class="main">
+  <div class="container display-flex">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6 custom-margin">
+        <h1 class="title">Controle de Dívidas</h1>
+        <p class="subTitle">
+          Agora é possível ter o controle das suas dividas. Saiba o que esta
+          gastando mais e saia do vermelho.
+        </p>
+      </div>
+      <div class="col-xs-12 col-lg-6">
+        <div class="fixed-wrapper">
+          <mat-card class="custom-style-card">
+            <mat-tab-group>
+              <mat-tab label="ENTRAR">
+                <form>
+                  <div class="input-group mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="E-mail"
+                      aria-label="email"
+                      aria-describedby="email"
+                    />
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Senha"
+                      aria-label="password"
+                      aria-describedby="password"
+                    />
+                  </div>
+
+                  <div class="d-grid gap-2">
+                    <button
+                      class="btn btn-primary btn-login"
+                      type="submit">
+                      ENTRAR
+                    </button>
+                  </div>
+
+                  <p class="text-custom">
+                    Se você ainda não tiver os dados de login, será necessário
+                    realizar um cadastro.
+                  </p>
+                </form>
+              </mat-tab>
+              <mat-tab label="CADASTRAR">
+                <form
+                [formGroup]="formRegister"
+                (ngSubmit)="openDialogRegister()"
+                >
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nome"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                      formControlName="name"
+                    />
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                      formControlName="email"
+                    />
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Idade"
+                      aria-label="Age"
+                      aria-describedby="basic-addon1"
+                      formControlName="age"
+                    />
+                  </div>
+
+                  <div class="d-grid gap-2">
+                    <button
+                      class="btn btn-primary btn-register"
+                      type="submit"
+                      [disabled]="formRegister.invalid"
+
+                      >
+                      CONTINUAR CADASTRO
+                    </button>
+                  </div>
+                </form>
+              </mat-tab>
+            </mat-tab-group>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+.main {
+  background: rgb(240, 238, 238);
+
+  .display-flex {
+    width: 70%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+
+    form {
+      margin: 15px;
+    }
+
+    .custom-margin {
+      margin-top: 110px;
+    }
+    .custom-style-card {
+      width: 450px;
+      height: 340px;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    @media screen and (min-width: 400px) {
+      h1,
+      p {
+        text-align: center;
+      }
+    }
+
+    @media screen and (min-width: 960px) {
+      h1,
+      p {
+        text-align: left;
+      }
+    }
+    input {
+      margin-top: 20px;
+    }
+
+    .text-custom {
+      position: relative;
+      top: 11px;
+      font-size: 13px;
+      text-align: left;
+    }
+  }
+
+}
