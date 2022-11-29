@@ -63,8 +63,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.destroy$))
         .subscribe((res: LoginUser) => {
           let {token} = res;
-          this.localStorageService.setLocalStorage('token', token)
-          this.localStorageService.setLocalStorage('user', email)
+          this.localStorageService.setLocalStorage('token', JSON.stringify(token))
+          this.localStorageService.setLocalStorage('user', JSON.stringify(email))
           this.utilService.showSucces('Login realizado com sucesso!')
           this.navigateUrl('dashboard')
         })
