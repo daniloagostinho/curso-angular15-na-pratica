@@ -10,6 +10,8 @@ import { BalanceTotalCardComponent } from './balance-total-card/balance-total-ca
 import { RevenuesComponent } from './revenues/revenues.component';
 import { DebtsComponent } from './debts/debts.component';
 import { FooterComponent } from './footer/footer.component';
+import { MessageHourComponent } from './message-hour/message-hour.component';
+import { ImgProfileComponent } from './img-profile/img-profile.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FooterComponent } from './footer/footer.component';
     BalanceTotalCardComponent,
     RevenuesComponent,
     DebtsComponent,
-    FooterComponent
+    FooterComponent,
+    MessageHourComponent,
+    ImgProfileComponent
   ],
   imports: [
     CommonModule,
