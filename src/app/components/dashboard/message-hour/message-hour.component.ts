@@ -23,7 +23,7 @@ export class MessageHourComponent implements OnInit {
       return;
     }
     if(hour < 18) {
-      this.messageHour.emit('Bom tarde!')
+      this.messageHour.emit('Boa tarde!')
       return;
     }
     this.messageHour.emit('Boa noite')
