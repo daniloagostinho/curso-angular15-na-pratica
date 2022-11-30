@@ -12,7 +12,9 @@
 
         <ul class="display-flex-end">
           <li>
-            <app-img-profile></app-img-profile>
+            <app-img-profile
+            [img]="imageUser ? imageUser : isDefaultImage"
+            ></app-img-profile>
           </li>
 
           <li class="mt-3">

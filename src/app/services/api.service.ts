@@ -61,10 +61,9 @@ export class ApiService {
   }
 
   downloadImage(imgName: string): Observable<DownloadImage> {
-    const headers = new HttpHeaders()
-      headers.set('imgName', imgName)
+    const headers = new HttpHeaders().set('imgName', imgName)
 
-    return this.httpClient.get<DownloadImage>(enviremonent.BASE_URL + '/download/image', {headers})
+    return this.httpClient.get<DownloadImage>(enviremonent.BASE_URL + '/download/image', {headers: headers})
       .pipe(
         catchError((err) => {
           if(err.status === 0 && err.status !== 404) {
