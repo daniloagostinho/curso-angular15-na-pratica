@@ -1,0 +1,47 @@
+.container {
+  table {
+    width: 100%;
+
+    th {
+      width: 20vh;
+    }
+  }
+
+  .btn-default {
+    float: right;
+    margin-bottom: 10px;
+    position: relative;
+    top: -18px;
+  }
+  .mat-label {
+    margin-right: 10px;
+  }
+  .center,
+  .display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .float-right {
+    float: right;
+    margin-top: 20px;
+  }
+
+  .image {
+    float: left;
+    width: 34%;
+    cursor: pointer;
+  }
+
+  .custom-position {
+    position: relative;
+    left: 55px;
+    top: 10px;
+  }
+
+  .animationCard {
+    transition: width 2s;
+  }
+}
+

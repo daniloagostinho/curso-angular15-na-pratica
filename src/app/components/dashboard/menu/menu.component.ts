@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { DownloadImage } from './../../../interfaces/downloadImage';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,8 @@ export class MenuComponent implements OnInit {
   imageUser!: SafeResourceUrl;
   constructor(private localStorageService: LocalstorageService,
     private apiService: ApiService,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private router: Router) {
 
   }
 
@@ -36,9 +38,13 @@ export class MenuComponent implements OnInit {
     this.messageHour = message;
   }
 
-
   getNameUser() {
     const nameUser = this.localStorageService.getLocalStorage('userInfo')
     this.showNameUser = nameUser.name;
+  }
+
+  logout() {
+    this.localStorageService.removeLocalStorage('token')
+    this.router.navigate(['/'])
   }
 }
