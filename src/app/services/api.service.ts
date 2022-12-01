@@ -94,7 +94,7 @@ export class ApiService {
     let headers = new HttpHeaders()
     headers = headers.set('month', param).set('user', user)
 
-    return this.httpClient.get<any>(enviremonent.BASE_URL + 'list/revenues', {headers: headers})
+    return this.httpClient.get<any>(enviremonent.BASE_URL + '/list/revenues', {headers: headers})
       .pipe(
         first(),
 

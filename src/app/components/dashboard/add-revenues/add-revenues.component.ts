@@ -155,8 +155,6 @@ export class AddRevenuesComponent implements OnInit, OnDestroy {
           }
         }
       }
-      console.log(this.getValueControl(this.form, 'fixedRevenue'))
-      debugger;
       if(this.getValueControl(this.form, 'fixedRevenue')) {
         for(let i = 0; i < this.months.length; i++) {
           dateEntry = new Date(dataReplace[0], this.searchIndexMonth(this.months[i]), dataReplace[2])
