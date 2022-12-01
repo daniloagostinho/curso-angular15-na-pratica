@@ -97,6 +97,7 @@ export class ApiService {
     return this.httpClient.get<any>(enviremonent.BASE_URL + 'list/revenues', {headers: headers})
       .pipe(
         first(),
+
         catchError((err) => {
           if(err.status === 0 && err.status !== 404) {
             this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
