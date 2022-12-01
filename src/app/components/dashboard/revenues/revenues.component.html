@@ -7,6 +7,8 @@
       <input
         matInput
         placeholder="Pesquisar Receita"
+        (keyup)="applyFilter($event)"
+        appInputWidth
       />
     </div>
     <button

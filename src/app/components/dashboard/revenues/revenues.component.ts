@@ -93,4 +93,9 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
       }
     })
   }
+
+  applyFilter(event: any) {
+    const filterValues = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValues.trim().toLocaleLowerCase();
+  }
 }
