@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { StoreService } from 'src/app/shared/store.service';
 import { AddRevenuesComponent } from '../add-revenues/add-revenues.component';
+import { UpdateRevenuesComponent } from '../update-revenues/update-revenues.component';
 
 @Component({
   selector: 'app-revenues',
@@ -36,18 +37,17 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.storeService.getStoreRegisterRevenues().subscribe(res => {
+    this.storeService.getStoreRevenues().subscribe(res => {
       if(res) {
         this.getRegisterRevenues(this.monthSelelected)
       }
     })
-
-    this.storeService.getStoreMonth().subscribe(res => {
-      this.monthSelelected = res;
-    })
   }
 
   ngAfterViewInit() {
+    this.storeService.getStoreMonth().subscribe(res => {
+      this.monthSelelected = res;
+    })
     this.getRegisterRevenues(this.monthSelelected);
   }
 
@@ -97,5 +97,24 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
   applyFilter(event: any) {
     const filterValues = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValues.trim().toLocaleLowerCase();
+  }
+
+  selectAction(action: string, element: any) {
+    console.log(action)
+    if(action.indexOf('edit.png') != -1) {
+      this.dialog.open(UpdateRevenuesComponent, {
+        width: '600px',
+        data: {
+          data: element
+        }
+      })
+    } else {
+      const question = confirm('Tem certeza que deseja excluir essa Receita?')
+
+      if(question) {
+
+
+      }
+    }
   }
 }

@@ -174,7 +174,7 @@ export class AddRevenuesComponent implements OnInit, OnDestroy {
           }
 
           this.apiService.registerRevenues(payload).subscribe()
-          this.storeService.setStoreRegisterRevenues(true)
+          this.storeService.setStoreRevenues(true)
           this.dialogRef.close();
         }
       }
@@ -182,7 +182,7 @@ export class AddRevenuesComponent implements OnInit, OnDestroy {
       this.apiService.registerRevenues(payload)
         .subscribe((res: RegisterRevenues) => {
           if(res) {
-            this.storeService.setStoreRegisterRevenues(true)
+            this.storeService.setStoreRevenues(true)
           }
         })
 
