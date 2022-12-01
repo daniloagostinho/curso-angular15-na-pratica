@@ -2,7 +2,7 @@ import { RegisterRevenues } from './../interfaces/registerRevenues';
 import { RegisterUser } from './../interfaces/registerUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, first, Observable, retry, throwError } from 'rxjs';
 import { enviremonent } from 'src/enviremonents/enviremonent';
 import { UtilsService } from './utils.service';
 import { LoginUser } from '../interfaces/loginUser';
@@ -88,5 +88,25 @@ export class ApiService {
         })
       )
 
+  }
+
+  getRegisterRevenues(param: any, user: any): Observable<any> {
+    let headers = new HttpHeaders()
+    headers = headers.set('month', param).set('user', user)
+
+    return this.httpClient.get<any>(enviremonent.BASE_URL + 'list/revenues', {headers: headers})
+      .pipe(
+        first(),
+        catchError((err) => {
+          if(err.status === 0 && err.status !== 404) {
+            this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
+          } else if(err.status === 404) {
+            this.utilsService.showError(err.error.message)
+          } else {
+            this.utilsService.showError('Ocorreu um erro no servidor, tente mais tarde!')
+          }
+          return throwError(() => err)
+        })
+      )
   }
 }
