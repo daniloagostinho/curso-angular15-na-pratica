@@ -112,8 +112,7 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
       const question = confirm('Tem certeza que deseja excluir essa Receita?')
 
       if(question) {
-
-
+        //TODO
       }
     }
   }
