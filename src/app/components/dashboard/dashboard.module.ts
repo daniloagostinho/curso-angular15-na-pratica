@@ -14,6 +14,8 @@ import { MessageHourComponent } from './message-hour/message-hour.component';
 import { ImgProfileComponent } from './img-profile/img-profile.component';
 import { SharedMaterialModule } from 'src/app/shared/shared-material/shared-material.module';
 import { CardViewComponent } from './card-view/card-view.component';
+import { AddRevenuesComponent } from './add-revenues/add-revenues.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,12 +30,15 @@ import { CardViewComponent } from './card-view/card-view.component';
     FooterComponent,
     MessageHourComponent,
     ImgProfileComponent,
-    CardViewComponent
+    CardViewComponent,
+    AddRevenuesComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedMaterialModule
+    SharedMaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

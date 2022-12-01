@@ -1,3 +1,4 @@
+import { RegisterRevenues } from './../interfaces/registerRevenues';
 import { RegisterUser } from './../interfaces/registerUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -73,6 +74,16 @@ export class ApiService {
           } else {
             this.utilsService.showError('Ocorreu um erro no servidor, tente mais tarde!')
           }
+          return throwError(() => err)
+        })
+      )
+
+  }
+
+  registerRevenues(revenue: any): Observable<RegisterRevenues> {
+    return this.httpClient.post<RegisterRevenues>(enviremonent.BASE_URL + '/auth/revenues', revenue)
+      .pipe(
+        catchError((err) => {
           return throwError(() => err)
         })
       )

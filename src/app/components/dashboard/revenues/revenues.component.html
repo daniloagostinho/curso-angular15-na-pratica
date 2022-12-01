@@ -12,6 +12,7 @@
     <button
       color="primary"
       class="btn-default btn btn-primary"
+      (click)="openDialog()"
     >
       Adicionar Receita
     </button>
@@ -19,7 +20,7 @@
       <!-- MAT-SPINNER AQUI -->
     </div>
     <div class="display"></div>
-    <table
+    <!-- <table
       mat-table
       class="mat-elevation-z8"
     >
@@ -61,21 +62,21 @@
 
       <tr mat-header-row *matHeaderRowDef=""></tr>
       <tr mat-row *matRowDef="let row; columns: "></tr>
-    </table>
+    </table> -->
 
-    <mat-paginator
+    <!-- <mat-paginator
       #paginator
       [length]=""
       [pageSize]="3"
       [pageSizeOptions]="[1, 2, 4]"
     >
-    </mat-paginator>
-    <ng-container>
+    </mat-paginator> -->
+    <!-- <ng-container>
       <div class="container">
         <div class="center">
           <span>Você ainda não cadastrou receitas para esse mês.</span>
         </div>
       </div>
-    </ng-container>
+    </ng-container> -->
   </app-card-view>
 </div>

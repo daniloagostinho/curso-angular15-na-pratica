@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   formRegister!: FormGroup;
   formLogin!: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  dialogRef: any;
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
