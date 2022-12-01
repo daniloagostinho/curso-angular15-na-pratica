@@ -1,17 +1,20 @@
+import { RegisterRevenues } from './../../../interfaces/registerRevenues';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { Category } from './../../../interfaces/category';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { StoreService } from 'src/app/shared/store.service';
 import { ApiService } from 'src/app/services/api.service';
+import { Subject, takeUntil } from 'rxjs';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-add-revenues',
   templateUrl: './add-revenues.component.html',
   styleUrls: ['./add-revenues.component.scss']
 })
-export class AddRevenuesComponent implements OnInit {
+export class AddRevenuesComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   typeRevenue!: string;
   revenues!: Category[];
@@ -30,12 +33,14 @@ export class AddRevenuesComponent implements OnInit {
     'Novembro',
     'Dezembro',
   ]
+  destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private fb: FormBuilder,
     @Inject(DOCUMENT) private document: any,
     private localStorageService: LocalstorageService,
     private storeService: StoreService,
-    private apiService: ApiService) {
+    private apiService: ApiService,
+    private dialogRef: DialogRef<AddRevenuesComponent>) {
 
   }
 
@@ -68,7 +73,9 @@ export class AddRevenuesComponent implements OnInit {
         name: 'Salario'
       }
     ]
-    this.storeService.getStoreMonth().subscribe(res => {
+    this.storeService.getStoreMonth()
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(res => {
       this.month = res;
     })
     this.preventFutureDate();
@@ -148,12 +155,40 @@ export class AddRevenuesComponent implements OnInit {
           }
         }
       }
+      console.log(this.getValueControl(this.form, 'fixedRevenue'))
+      debugger;
+      if(this.getValueControl(this.form, 'fixedRevenue')) {
+        for(let i = 0; i < this.months.length; i++) {
+          dateEntry = new Date(dataReplace[0], this.searchIndexMonth(this.months[i]), dataReplace[2])
+
+          const payload = {
+            user: {
+              title: user,
+              month: {
+                title: this.months[i],
+                listMonth: {
+                  typeRevenue,
+                  value,
+                  dateEntry
+                }
+              }
+            }
+          }
+
+          this.apiService.registerRevenues(payload).subscribe()
+          this.storeService.setStoreRegisterRevenues(true)
+          this.dialogRef.close();
+        }
+      }
 
       this.apiService.registerRevenues(payload)
-        .subscribe(res => {
-          console.log(res)
+        .subscribe((res: RegisterRevenues) => {
+          if(res) {
+            this.storeService.setStoreRegisterRevenues(true)
+          }
         })
 
+        this.dialogRef.close();
     }
   }
 
@@ -172,5 +207,10 @@ export class AddRevenuesComponent implements OnInit {
     })
 
     return index;
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true)
+    this.destroy$.unsubscribe();
   }
 }

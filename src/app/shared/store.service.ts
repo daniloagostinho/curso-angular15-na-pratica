@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class StoreService {
+  private storeRegister = new BehaviorSubject<boolean>(false)
   private storeMonth = new BehaviorSubject<string>('')
   constructor() { }
 
@@ -14,5 +15,12 @@ export class StoreService {
 
   getStoreMonth() {
     return this.storeMonth.asObservable();
+  }
+
+  setStoreRegisterRevenues(value: boolean) {
+    this.storeRegister.next(value)
+  }
+  getStoreRegisterRevenues() {
+    return this.storeRegister.asObservable();
   }
 }
