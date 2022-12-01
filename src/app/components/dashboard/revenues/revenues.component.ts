@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,13 +13,20 @@ import { AddRevenuesComponent } from '../add-revenues/add-revenues.component';
   templateUrl: './revenues.component.html',
   styleUrls: ['./revenues.component.scss']
 })
-export class RevenuesComponent implements OnInit {
+export class RevenuesComponent implements OnInit, AfterViewInit {
   monthSelelected!: string;
   user!: string;
   loading = false;
   emptyResult = false;
   arrRevenues: any[] = [];
   public dataSource = new MatTableDataSource<any>();
+  displayedColumns: string[] = [
+    'tipoReceita',
+    'valor',
+    'dataEntrada',
+    '_id',
+    'acoes'
+  ]
   @ViewChild('paginator') paginator!: MatPaginator;
   constructor(private dialog: MatDialog,
     private storeService: StoreService,
@@ -30,7 +37,6 @@ export class RevenuesComponent implements OnInit {
 
   ngOnInit() {
     this.storeService.getStoreRegisterRevenues().subscribe(res => {
-      console.log('res -->> ', res)
       if(res) {
         this.getRegisterRevenues(this.monthSelelected)
       }
@@ -39,6 +45,10 @@ export class RevenuesComponent implements OnInit {
     this.storeService.getStoreMonth().subscribe(res => {
       this.monthSelelected = res;
     })
+  }
+
+  ngAfterViewInit() {
+    this.getRegisterRevenues(this.monthSelelected);
   }
 
   getRegisterRevenues(monthSelelected: string) {
