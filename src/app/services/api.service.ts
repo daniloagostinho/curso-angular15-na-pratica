@@ -7,6 +7,7 @@ import { enviremonent } from 'src/enviremonents/enviremonent';
 import { UtilsService } from './utils.service';
 import { LoginUser } from '../interfaces/loginUser';
 import { DownloadImage } from '../interfaces/downloadImage';
+import { ListRevenues } from '../interfaces/listRevenues';
 
 @Injectable({
   providedIn: 'root'
@@ -90,11 +91,11 @@ export class ApiService {
 
   }
 
-  getRegisterRevenues(param: any, user: any): Observable<any> {
+  getRegisterRevenues(param: any, user: any): Observable<ListRevenues> {
     let headers = new HttpHeaders()
     headers = headers.set('month', param).set('user', user)
 
-    return this.httpClient.get<any>(enviremonent.BASE_URL + '/list/revenues', {headers: headers})
+    return this.httpClient.get<ListRevenues>(enviremonent.BASE_URL + '/list/revenues', {headers: headers})
       .pipe(
         first(),
 
