@@ -16,6 +16,7 @@ import { SharedMaterialModule } from 'src/app/shared/shared-material/shared-mate
 import { CardViewComponent } from './card-view/card-view.component';
 import { AddRevenuesComponent } from './add-revenues/add-revenues.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MonthsRevenuesComponent } from './months-revenues/months-revenues.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MessageHourComponent,
     ImgProfileComponent,
     CardViewComponent,
-    AddRevenuesComponent
+    AddRevenuesComponent,
+    MonthsRevenuesComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,10 @@
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { Category } from './../../../interfaces/category';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { StoreService } from 'src/app/shared/store.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-add-revenues',
@@ -12,7 +15,27 @@ export class AddRevenuesComponent implements OnInit {
   form!: FormGroup;
   typeRevenue!: string;
   revenues!: Category[];
-  constructor(private fb: FormBuilder, @Inject(DOCUMENT) private document: any) {
+  month!: string;
+  months: string[] = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro',
+  ]
+  constructor(
+    private fb: FormBuilder,
+    @Inject(DOCUMENT) private document: any,
+    private localStorageService: LocalstorageService,
+    private storeService: StoreService,
+    private apiService: ApiService) {
 
   }
 
@@ -45,7 +68,9 @@ export class AddRevenuesComponent implements OnInit {
         name: 'Salario'
       }
     ]
-
+    this.storeService.getStoreMonth().subscribe(res => {
+      this.month = res;
+    })
     this.preventFutureDate();
   }
 
@@ -59,7 +84,6 @@ export class AddRevenuesComponent implements OnInit {
   }
 
   preventFutureDate() {
-    debugger;
     const inputDate = this.document.querySelector('#dateEntry')
 
     let date = new Date();
@@ -85,6 +109,68 @@ export class AddRevenuesComponent implements OnInit {
     this.form.patchValue({
       typeRevenue: this.typeRevenue
     })
-    console.log(this.form)
+
+    if(this.isValidForm()) {
+      let typeRevenue = this.getValueControl(this.form, 'typeRevenue');
+      let value = this.getValueControl(this.form, 'value');
+      let user = this.localStorageService.getLocalStorage('user')
+
+      const date = this.getValueControl(this.form, 'dateEntry')
+
+
+      const dataReplace = date
+        .replaceAll('-', '$')
+        .replaceAll(' ', '$')
+        .split('$')
+
+      let fixedMonth = Number(dataReplace[1] - 1)
+      let newDate = new Date(dataReplace[0], fixedMonth, dataReplace[2])
+
+      const monthDateSelected = newDate.toLocaleDateString('pt-br', {
+        month: 'long'
+      })
+
+      const convertUppercase = monthDateSelected[0].toUpperCase() + monthDateSelected.substring(1)
+
+      let indexMonthCurrent = this.searchIndexMonth(convertUppercase)
+      let dateEntry = new Date(dataReplace[0], indexMonthCurrent, dataReplace[2])
+
+      const payload = {
+        user: {
+          title: user,
+          month: {
+            title: this.month,
+            listMonth: {
+              typeRevenue,
+              value,
+              dateEntry
+            }
+          }
+        }
+      }
+
+      this.apiService.registerRevenues(payload)
+        .subscribe(res => {
+          console.log(res)
+        })
+
+    }
+  }
+
+  isValidForm() {
+    return this.form.valid;
+  }
+
+  getValueControl(form: FormGroup, control: string) {
+    return form.controls[control].value;
+  }
+
+
+  searchIndexMonth(monthSearch: any) {
+    let index = this.months.findIndex((month) => {
+      return month === monthSearch;
+    })
+
+    return index;
   }
 }
