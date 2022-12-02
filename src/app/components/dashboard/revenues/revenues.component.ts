@@ -1,3 +1,4 @@
+import { DeleteRevenues } from './../../../interfaces/deleteRevenues';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -38,6 +39,7 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.storeService.getStoreRevenues().subscribe(res => {
+      console.log(res)
       if(res) {
         this.getRegisterRevenues(this.monthSelelected)
       }
@@ -100,7 +102,6 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
   }
 
   selectAction(action: string, element: any) {
-    console.log(action)
     if(action.indexOf('edit.png') != -1) {
       this.dialog.open(UpdateRevenuesComponent, {
         width: '600px',
@@ -112,7 +113,12 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
       const question = confirm('Tem certeza que deseja excluir essa Receita?')
 
       if(question) {
-        //TODO
+        this.apiService.deleteRevenues(element._id)
+          .subscribe((res: DeleteRevenues) => {
+            if(res) {
+              this.storeService.setStoreRevenues(true)
+            }
+          })
       }
     }
   }

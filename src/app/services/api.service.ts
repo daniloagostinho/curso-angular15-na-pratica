@@ -1,3 +1,4 @@
+import { UpdateRevenues } from './../interfaces/updateRevenues';
 import { RegisterRevenues } from './../interfaces/registerRevenues';
 import { RegisterUser } from './../interfaces/registerUser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,6 +9,7 @@ import { UtilsService } from './utils.service';
 import { LoginUser } from '../interfaces/loginUser';
 import { DownloadImage } from '../interfaces/downloadImage';
 import { ListRevenues } from '../interfaces/listRevenues';
+import { DeleteRevenues } from '../interfaces/deleteRevenues';
 
 @Injectable({
   providedIn: 'root'
@@ -111,11 +113,28 @@ export class ApiService {
       )
   }
 
-  deleteRevenues(id: string): Observable<any> {
-    return this.httpClient.delete<any>(enviremonent.BASE_URL + '/delete/revenue/' + id)
+  deleteRevenues(id: string): Observable<DeleteRevenues> {
+    return this.httpClient.delete<DeleteRevenues>(enviremonent.BASE_URL + '/delete/revenue/' + id)
       .pipe(
         catchError((err) => {
           if(err.status === 0 && err.status !== 404) {
+            this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
+          } else if(err.status === 404) {
+            this.utilsService.showError(err.error.message)
+          } else {
+            this.utilsService.showError('Ocorreu um erro no servidor, tente mais tarde!')
+          }
+          return throwError(() => err)
+        })
+      )
+  }
+
+  updateRevenues(id: string, payload: any): Observable<UpdateRevenues> {
+    return this.httpClient.put<UpdateRevenues>(enviremonent.BASE_URL + '/update/revenues' + id, payload)
+      .pipe(
+        catchError((err) => {
+          if(err.status === 0 && err.status !== 404) {
+
             this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
           } else if(err.status === 404) {
             this.utilsService.showError(err.error.message)

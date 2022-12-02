@@ -1,1 +1,43 @@
-<p>update-revenues works!</p>
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="typeRevenue">Tipo de Receita</label>
+
+    <select
+      name="typeRevenue"
+      id="typeRevenue"
+      class="form-control"
+      formControlName="typeRevenue"
+      [(ngModel)]="typeRevenue"
+    >
+      <option *ngFor="let revenue of categories" [selected]="revenue.name === typeRevenue">
+        <span>{{revenue.name}}</span>
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="value">Valor</label>
+    <input
+      type="text"
+      class="form-control"
+      id="value"
+      name="value"
+      aria-describedby="value"
+      formControlName="value"
+      currencyMask
+    />
+  </div>
+  <div class="form-group">
+    <label for="dateEntry">Data de Entrada</label>
+    <input
+      type="date"
+      class="form-control"
+      id="dateEntry"
+      name="dateEntry"
+      aria-describedby="dateEntry"
+      formControlName="dateEntry"
+      onkeydown="return false"
+    />
+  </div>
+  <button class="btn btn-primary">Atualizar Receita</button>
+</form>
