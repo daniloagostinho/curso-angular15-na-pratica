@@ -54,6 +54,11 @@ export class MonthsRevenuesComponent implements OnInit {
   }
 
   next() {
-    console.log('next')
+    this.findIndexElement();
+    this.i = this.i + 1;
+    this.i = this.i % this.months.length;
+    this.month = this.months[this.i]
+    this.storeService.setStoreMonth(this.months[this.i])
+    this.storeService.setSearchRevenuesByMonth(true)
   }
 }
