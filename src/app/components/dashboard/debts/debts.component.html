@@ -1,1 +1,87 @@
-<p>debts works!</p>
+<div class="container">
+  <app-card-view>
+    <!-- COMPONENTE DE MONTHS-DEBTS AQUI -->
+    <div>
+      <br>
+        <label class="mat-label"><strong>Encontrar Dívida:</strong></label>
+        <input
+          matInput
+          placeholder="Pesquisar Dívida"
+        />
+    </div>
+    <button
+      color="primary"
+      class="btn-default btn btn-primary"
+      (click)="openDialog()"
+    >
+      Adicionar Dívida
+    </button>
+    <div class="center custom-position">
+      <!-- COMPONENTE MAT-SPINNER AQUI -->
+    </div>
+    <!-- <table
+      mat-table
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="despesa">
+        <th mat-header-cell *matHeaderCellDef>Dívida</th>
+        <td mat-cell *matCellDef="let element"></td>
+      </ng-container>
+
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td mat-cell *matCellDef="let element"></td>
+      </ng-container>
+
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef>Valor</th>
+        <td mat-cell *matCellDef="let element">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataVencimento">
+        <th mat-header-cell *matHeaderCellDef>Data de Vencimento</th>
+        <td mat-cell *matCellDef="let element">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef style="width: 7%">Ações</th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngFor="let img of element.actions; let i = index">
+            <img
+              class="image"
+              src=""
+              alt=""
+            />
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef=""></tr>
+      <tr mat-row *matRowDef="let row; columns: "></tr>
+    </table> -->
+
+    <!-- <mat-paginator
+      #paginator
+      [length]=""
+      [pageSize]="3"
+      [pageSizeOptions]="[1, 2, 4]"
+    >
+    </mat-paginator> -->
+
+    <!-- <ng-container>
+      <div class="container">
+        <div class="center">
+          <span>Você ainda não cadastrou dívidas para esse mês.</span>
+        </div>
+      </div>
+    </ng-container> -->
+  </app-card-view>
+</div>
