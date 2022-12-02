@@ -13,6 +13,7 @@ import { DownloadImage } from '../interfaces/downloadImage';
 import { ListRevenues } from '../interfaces/listRevenues';
 import { DeleteRevenues } from '../interfaces/deleteRevenues';
 import { UpdateDebts } from '../interfaces/updateDebts';
+import { DeleteDebts } from '../interfaces/deleteDebts';
 
 @Injectable({
   providedIn: 'root'
@@ -196,6 +197,23 @@ export class ApiService {
           }
           return throwError(() => err)
         })
+      )
+  }
+
+  deleteDebts(id: string): Observable<DeleteDebts> {
+    return this.httpClient.delete<DeleteDebts>(enviremonent.BASE_URL + '/delete/debts/' + id)
+      .pipe(
+        catchError((err) => {
+          if(err.status === 0 && err.status !== 404) {
+            this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
+          } else if(err.status === 404) {
+            this.utilsService.showError(err.error.message)
+          } else {
+            this.utilsService.showError('Ocorreu um erro no servidor, tente mais tarde!')
+          }
+          return throwError(() => err)
+        })
+
       )
   }
 }

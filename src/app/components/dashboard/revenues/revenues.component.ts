@@ -38,8 +38,8 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.defineInitMonth();
     this.storeService.getStoreRevenues().subscribe(res => {
-      console.log(res)
       if(res) {
         this.getRegisterRevenues(this.monthSelelected)
       }
@@ -131,4 +131,12 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
       }
     }
   }
+
+  defineInitMonth() {
+    let date = new Date();
+    let dateString = date.toLocaleDateString('pt-br', {month: 'long'})
+    let letterDateString = dateString[0].toUpperCase() + dateString.substring(1)
+    this.monthSelelected ==  undefined ? (this.monthSelelected = letterDateString) : this.monthSelelected
+  }
+
 }
