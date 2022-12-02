@@ -1,3 +1,4 @@
+import { RegisterDebts } from './../interfaces/registerDebts';
 import { UpdateRevenues } from './../interfaces/updateRevenues';
 import { RegisterRevenues } from './../interfaces/registerRevenues';
 import { RegisterUser } from './../interfaces/registerUser';
@@ -145,4 +146,15 @@ export class ApiService {
         })
       )
   }
+
+  registerDebts(debt: any): Observable<RegisterDebts> {
+    return this.httpClient.post<RegisterDebts>(enviremonent.BASE_URL + '/auth/debts', debt)
+      .pipe(
+        catchError((err) => {
+          return throwError(() => err)
+        })
+      )
+
+  }
+
 }
