@@ -1,4 +1,4 @@
-# Projeto do curso de Testes Unitários com Angular / Jasmine e Karma. 
+# Projeto do curso de Angular 15 na prática
 
 ### Clonando e configurando
  Abra o prompt de comando e cole o código abaixo:
