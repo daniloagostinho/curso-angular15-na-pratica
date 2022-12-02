@@ -1,27 +1,124 @@
-# CursoAngular15NaPratica
+# Projeto do curso de Angular 15 na prática
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+### Clonando e configurando
+ Abra o prompt de comando e cole o código abaixo:
+ 
+ ```
+ git clone git@github.com:daniloagostinho/curso-angular15-na-pratica.git
+```
 
-## Development server
+Entre na pasta do projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```
+ cd curso-angular15-na-pratica
+```
 
-## Code scaffolding
+e instale as dependências
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+ npm i
+```
 
-## Build
+### Rodando a api
+Parar iniciar o servidor com a aplicação funcionando digite o comando abaixo:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+ ng serve
+```
 
-## Running unit tests
+a aplicação estara disponível no endereço:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+ localhost:4200
+```
 
-## Running end-to-end tests
+**Grade curricular**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Seção 1
+### Introdução ao curso
+ - Introdução;
+ - Apresentação do curso;
+ - Como aproveitar aproveitar o máximo do curso.
+ 
+## Seção 2
+### Preparando o ambiente
+ - Introdução da seção;
+ - Instalando o Nodejs;
+ - Instalando o Angular CLI;
+ - Instalando o Visual Studio Code;
+ - Criando a aplicação com Angular CLI;
+ - Instalando o bootstrap;
+ - Criando uma conta no mongoDB Atlas;
+ - Clonando o backend;
+ - Conectando o backend com o mongoDB atlas.
+ 
+## Seção 3
+### Criando a página de login
+ - Introdução da seção;
+ - Conteúdo da próxima aula;
+ - Criando o componente de login;
+ - Criando o formulário de cadastro;
+ - Conteúdo da próxima aula;
+ - Criando modal de continuação do cadastro;
+ - Criando o formulário do modal de continuação do cadastro;
+ - Conteúdo da próxima aula;
+ - Criando método de upload da imagem de perfil;
+ - Criando validação de senhas iguais;
+ - Criando serviço para cadastro de usuários;
+ - Criando método para gerar payload do cadastro;
+ - Criando o método de submit;
+ - Criando serviço de notificações;
+ - Criando o formulário de login;
+ - Criando serviço para login do usuario;
+ - Concluindo o método de login;
+ - Criando rota de login com Lazy-loading;
+ - Criando a rota de dashboard com Lazy-loading;
+ - Criando a rota de dashboard com Lazy-loading;
+ - Protegento a rota dashboard com guardas de rota.
+ 
+## Seção 4
+### Criando a página de dashboard
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de dashboard;
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de menu;
+ - Trabalhando no componente de menssage de horas;
+ - Exibindo nome do usuário no menu;
+ - Criando serviço de download da imagem de perfil;
+ - Fazendo download da imagem de perfil do usuário;
+ - Fazendo download da imagem de perfil do usuário;
+ - Criando método de logout;
+ 
+## Seção 5
+### Trabalhando no componente de receitas
+ - Introdução da seção;
+ - Trabalhando no componente de receitas;
+ - Conteúdo da próxima aula;
+ - Criando o modal de cadastro de receitas;
+ - Criando o formulário do modal de cadastro de receitas;
+ - Impedindo que usuário selecione data futura no campo de data de entrada;
+ - Criando serviço de cadastro de receitas;
+ - Trabalhando no método de submit parte 1;
+ - Trabalhando no método de submit parte 2;
+ - Trabalhando no método submit parte 3;
+ - Aplicando formato de moeda no campo valor;
+ - Criando serviço de listagem de receitas;
+ - Trabalhando no método de listagem de receitas;
+ - Trabalhando na tabela de listagem de receitas parte 1;
+ - Trabalhando na tabela de listagem de receitas parte 2;
+ - Trabalhando na tabela de listagem de receitas parte 3;
+ - Trabalhando na tabela de listagem de receitas parte 4;
+ - Trabalhando nos ícones de ações da tabela;
+ - Criando serviço de exclusão de receitas;
+ - Trabalhando na exclusão das receitas.
+ 
+## Seção 6
+### Trabalhando no modal de atualização de receitas
+ - Introdução da seção;
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de atualização de receitas;
+ - Criando o formulário do modal de atualização de receitas parte 1;
+ - Criando o formulário do modal de atualização de receitas parte 2;
+ - Criando serviço de atualização de receitas;
+ - Criando método de submit;
+ - Exibindo mensagem quando não existirem receitas.
