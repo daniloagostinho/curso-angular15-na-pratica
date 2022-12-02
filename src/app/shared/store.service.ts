@@ -9,6 +9,7 @@ export class StoreService {
   private storeRegisterDebts = new BehaviorSubject<boolean>(false)
   private storeMonth = new BehaviorSubject<string>('')
   private searchRevenuesByMonth = new BehaviorSubject<boolean>(false)
+  private searchDebtsByMonth = new BehaviorSubject<boolean>(false)
   constructor() { }
 
   setStoreMonth(value: string) {
@@ -37,5 +38,11 @@ export class StoreService {
   }
   getSearchRevenuesByMonth() {
     return this.searchRevenuesByMonth.asObservable();
+  }
+  setSearchDebtsByMonth(value: boolean) {
+    this.searchDebtsByMonth.next(value)
+  }
+  getSearchDebtsByMonth() {
+    return this.searchDebtsByMonth.asObservable();
   }
 }

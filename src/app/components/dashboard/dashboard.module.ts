@@ -25,6 +25,7 @@ import { InputWidthDirective } from 'src/app/shared/input-width.directive';
 import { UpdateRevenuesComponent } from './update-revenues/update-revenues.component';
 import { AddDebtsComponent } from './add-debts/add-debts.component';
 import { UpdateDebtsComponent } from './update-debts/update-debts.component';
+import { MonthsDebtsComponent } from './months-debts/months-debts.component';
 
 registerLocaleData(localePt, 'pt')
 
@@ -57,7 +58,8 @@ export const CustomCurrencyMaskConfig = {
     InputWidthDirective,
     UpdateRevenuesComponent,
     AddDebtsComponent,
-    UpdateDebtsComponent
+    UpdateDebtsComponent,
+    MonthsDebtsComponent
   ],
   imports: [
     CommonModule,

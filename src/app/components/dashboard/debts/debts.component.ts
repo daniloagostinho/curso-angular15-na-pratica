@@ -56,6 +56,17 @@ export class DebtsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.getRegisterDebts(this.monthSelelected)
+
+    this.storeService.getSearchDebtsByMonth().subscribe(res => {
+      console.log('res --> ', res)
+      if(res) {
+        this.getRegisterDebts(this.monthSelelected)
+
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+        }, 3000);
+      }
+    })
   }
 
   getRegisterDebts(monthSelelected: string) {
