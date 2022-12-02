@@ -1,0 +1,15 @@
+.container-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .text {
+    position: relative;
+    left: -15px;
+    font-weight: bold;
+  }
+  img {
+    width: 40%;
+    cursor: pointer;
+  }
+}

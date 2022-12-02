@@ -51,6 +51,15 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
       this.monthSelelected = res;
     })
     this.getRegisterRevenues(this.monthSelelected);
+
+    this.storeService.getSearchRevenuesByMonth().subscribe(res => {
+      if(res) {
+        this.getRegisterRevenues(this.monthSelelected)
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator;
+        }, 3000);
+      }
+    })
   }
 
   getRegisterRevenues(monthSelelected: string) {
