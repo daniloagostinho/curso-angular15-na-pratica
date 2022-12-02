@@ -151,7 +151,7 @@ export class AddDebtsComponent implements OnInit {
           this.apiService.registerDebts(payload).subscribe()
         }
 
-        this.storeService.setStoreRevenues(true)
+        this.storeService.setStoreDebts(true)
         this.dialogRef.close();
         return;
       }

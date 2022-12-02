@@ -1,3 +1,3 @@
 export interface ListDebts {
-  result: object;
+  result: object[];
 }
