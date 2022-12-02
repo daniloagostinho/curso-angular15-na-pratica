@@ -97,4 +97,9 @@ export class DebtsComponent implements OnInit, AfterViewInit {
     this.monthSelelected ==  undefined ? (this.monthSelelected = letterDateString) : this.monthSelelected
   }
 
+  applyFilter(event: any) {
+    const filesValues = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filesValues.trim().toLocaleLowerCase();
+  }
 }
+
