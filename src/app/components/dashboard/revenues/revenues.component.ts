@@ -61,8 +61,6 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
 
       let arr: any[] = [];
 
-      debugger;
-
       if(res.result.length === 0) {
         this.emptyResult = true;
 
