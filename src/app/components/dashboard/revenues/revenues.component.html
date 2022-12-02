@@ -82,7 +82,7 @@
       [pageSizeOptions]="[3, 5, 10, 15, 25, 100]"
     >
     </mat-paginator>
-    <ng-container *ngIf="!emptyResult && !loading">
+    <ng-container *ngIf="emptyResult && !loading">
       <div class="container">
         <div class="center">
           <span>Você ainda não cadastrou receitas para esse mês.</span>
