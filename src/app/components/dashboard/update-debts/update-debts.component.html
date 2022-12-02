@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="exampleFormControlSelect1">Dívida</label>
     <input
@@ -6,6 +6,7 @@
       class="form-control"
       id="depesa"
       aria-describedby="debt"
+      formControlName="debt"
     />
   </div>
   <div class="form-group">
@@ -14,8 +15,11 @@
       name="categoria"
       id="categoria"
       class="form-control"
+      [(ngModel)]="category"
+      formControlName="category"
     >
-      <option>
+      <option *ngFor="let categ of categories" [selected]="categ.name === category">
+        {{categ.name}}
       </option>
     </select>
   </div>
@@ -26,6 +30,8 @@
       class="form-control"
       id="valor"
       aria-describedby="value"
+      formControlName="value"
+      currencyMask
     />
   </div>
   <div class="form-group">
@@ -35,6 +41,7 @@
       class="form-control"
       id="dataVencimento"
       aria-describedby="expirationDate"
+      formControlName="expirationDate"
     />
   </div>
   <button class="btn btn-primary">Atualizar Dívida</button>

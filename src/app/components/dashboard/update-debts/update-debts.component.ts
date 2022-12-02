@@ -1,3 +1,4 @@
+import { Category } from './../../../interfaces/category';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -15,12 +16,33 @@ export class UpdateDebtsComponent implements OnInit {
   }
   form!: FormGroup;
   category!: string;
-
+  categories!: Category[];
 
   ngOnInit() {
     console.log(this.data)
     this.initForm();
     this.fillData();
+
+    this.categories = [
+      {
+        name: 'Casa',
+      },
+      {
+        name: 'Eletromesticos',
+      },
+      {
+        name: 'Saúde',
+      },
+      {
+        name: 'Entretenimento',
+      },
+      {
+        name: 'Estudo',
+      },
+      {
+        name: 'Outros',
+      },
+    ]
   }
 
   initForm() {
@@ -28,7 +50,7 @@ export class UpdateDebtsComponent implements OnInit {
       debt: [null, Validators.required],
       category: [null, Validators.required],
       value: [null, Validators.required],
-      epirationDate: [null, Validators.required],
+      expirationDate: [null, Validators.required],
     })
   }
 
@@ -39,8 +61,12 @@ export class UpdateDebtsComponent implements OnInit {
         debt: this.data.data?.debt,
         category: this.data.data?.category,
         value: this.data.data?.value,
-        epirationDate: this.data.data?.expirationDate,
+        expirationDate: this.data.data?.expirationDate,
       })
     }
+  }
+
+  submit() {
+
   }
 }
