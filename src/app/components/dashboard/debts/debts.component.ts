@@ -115,10 +115,10 @@ export class DebtsComponent implements OnInit, AfterViewInit {
       const question = confirm('Tem certeza que deseja excluir essa Receita?')
 
       if(question) {
-        this.apiService.deleteRevenues(element._id)
+        this.apiService.deleteDebts(element._id)
           .subscribe((res: any) => {
             if(res) {
-              this.storeService.setStoreRevenues(true)
+              this.storeService.setStoreDebts(true)
             }
           })
       }

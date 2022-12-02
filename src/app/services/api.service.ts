@@ -201,7 +201,7 @@ export class ApiService {
   }
 
   deleteDebts(id: string): Observable<DeleteDebts> {
-    return this.httpClient.delete<DeleteDebts>(enviremonent.BASE_URL + '/delete/debts/' + id)
+    return this.httpClient.delete<DeleteDebts>(enviremonent.BASE_URL + '/delete/debt/' + id)
       .pipe(
         catchError((err) => {
           if(err.status === 0 && err.status !== 404) {
