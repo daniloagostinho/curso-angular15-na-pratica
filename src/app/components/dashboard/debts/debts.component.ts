@@ -21,6 +21,14 @@ export class DebtsComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<any>();
   @ViewChild('paginator') paginator!: MatPaginator;
   monthSelelected!: string;
+  displayedColumns: string[] = [
+    'divida',
+    'categoria',
+    'valor',
+    'dataVencimento',
+    '_id',
+    'acoes'
+  ]
   constructor(private dialog: MatDialog,
     private localStorageService: LocalstorageService,
     private apiService: ApiService,

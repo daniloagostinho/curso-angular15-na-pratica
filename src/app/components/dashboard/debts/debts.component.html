@@ -1,7 +1,7 @@
 <div class="container">
   <app-card-view>
     <!-- COMPONENTE DE MONTHS-DEBTS AQUI -->
-    <div>
+    <div *ngIf="!emptyResult && !loading">
       <br>
         <label class="mat-label"><strong>Encontrar Dívida:</strong></label>
         <input
@@ -17,37 +17,46 @@
       Adicionar Dívida
     </button>
     <div class="center custom-position">
-      <!-- COMPONENTE MAT-SPINNER AQUI -->
+      <mat-spinner *ngIf="loading"></mat-spinner>
     </div>
-    <!-- <table
+    <table
       mat-table
       class="mat-elevation-z8"
+      [dataSource]="dataSource"
+      *ngIf="!loading && !emptyResult"
     >
-      <ng-container matColumnDef="despesa">
+      <ng-container matColumnDef="divida">
         <th mat-header-cell *matHeaderCellDef>Dívida</th>
-        <td mat-cell *matCellDef="let element"></td>
+        <td mat-cell *matCellDef="let element">
+          {{element.debt}}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="categoria">
         <th mat-header-cell *matHeaderCellDef>Categoria</th>
-        <td mat-cell *matCellDef="let element"></td>
+        <td mat-cell *matCellDef="let element">
+          {{element.category}}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="valor">
         <th mat-header-cell *matHeaderCellDef>Valor</th>
         <td mat-cell *matCellDef="let element">
+          {{element.value | currency: "BRL": "symbol": "1.2-2"}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="dataVencimento">
         <th mat-header-cell *matHeaderCellDef>Data de Vencimento</th>
         <td mat-cell *matCellDef="let element">
+          {{element.expirationDate | date : "dd/MM/yyyy"}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="_id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
         <td mat-cell *matCellDef="let element">
+          {{element._id | shortener}}
         </td>
       </ng-container>
 
@@ -57,31 +66,32 @@
           <div *ngFor="let img of element.actions; let i = index">
             <img
               class="image"
-              src=""
+              [src]="img"
               alt=""
             />
           </div>
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef=""></tr>
-      <tr mat-row *matRowDef="let row; columns: "></tr>
-    </table> -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns "></tr>
+    </table>
 
-    <!-- <mat-paginator
+    <mat-paginator
       #paginator
+      *ngIf="!emptyResult && !loading"
       [length]=""
       [pageSize]="3"
       [pageSizeOptions]="[1, 2, 4]"
     >
-    </mat-paginator> -->
+    </mat-paginator>
 
-    <!-- <ng-container>
+    <ng-container *ngIf="emptyResult && !loading">
       <div class="container">
         <div class="center">
           <span>Você ainda não cadastrou dívidas para esse mês.</span>
         </div>
       </div>
-    </ng-container> -->
+    </ng-container>
   </app-card-view>
 </div>
