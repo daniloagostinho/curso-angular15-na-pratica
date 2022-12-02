@@ -75,3 +75,50 @@ a aplicação estara disponível no endereço:
  - Criando a rota de dashboard com Lazy-loading;
  - Criando a rota de dashboard com Lazy-loading;
  - Protegento a rota dashboard com guardas de rota.
+ 
+## Seção 4
+### Criando a página de dashboard
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de dashboard;
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de menu;
+ - Trabalhando no componente de menssage de horas;
+ - Exibindo nome do usuário no menu;
+ - Criando serviço de download da imagem de perfil;
+ - Fazendo download da imagem de perfil do usuário;
+ - Fazendo download da imagem de perfil do usuário;
+ - Criando método de logout;
+ 
+## Seção 5
+### Trabalhando no componente de receitas
+ - Introdução da seção;
+ - Trabalhando no componente de receitas;
+ - Conteúdo da próxima aula;
+ - Criando o modal de cadastro de receitas;
+ - Criando o formulário do modal de cadastro de receitas;
+ - Impedindo que usuário selecione data futura no campo de data de entrada;
+ - Criando serviço de cadastro de receitas;
+ - Trabalhando no método de submit parte 1;
+ - Trabalhando no método de submit parte 2;
+ - Trabalhando no método submit parte 3;
+ - Aplicando formato de moeda no campo valor;
+ - Criando serviço de listagem de receitas;
+ - Trabalhando no método de listagem de receitas;
+ - Trabalhando na tabela de listagem de receitas parte 1;
+ - Trabalhando na tabela de listagem de receitas parte 2;
+ - Trabalhando na tabela de listagem de receitas parte 3;
+ - Trabalhando na tabela de listagem de receitas parte 4;
+ - Trabalhando nos ícones de ações da tabela;
+ - Criando serviço de exclusão de receitas;
+ - Trabalhando na exclusão das receitas.
+ 
+## Seção 6
+### Trabalhando no modal de atualização de receitas
+ - Introdução da seção;
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de atualização de receitas;
+ - Criando o formulário do modal de atualização de receitas parte 1;
+ - Criando o formulário do modal de atualização de receitas parte 2;
+ - Criando serviço de atualização de receitas;
+ - Criando método de submit;
+ - Exibindo mensagem quando não existirem receitas.
