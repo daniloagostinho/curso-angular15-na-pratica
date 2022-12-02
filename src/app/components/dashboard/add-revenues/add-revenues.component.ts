@@ -174,9 +174,11 @@ export class AddRevenuesComponent implements OnInit, OnDestroy {
           }
 
           this.apiService.registerRevenues(payload).subscribe()
-          this.storeService.setStoreRevenues(true)
-          this.dialogRef.close();
         }
+
+        this.storeService.setStoreRevenues(true)
+        this.dialogRef.close();
+        return;
       }
 
       this.apiService.registerRevenues(payload)
