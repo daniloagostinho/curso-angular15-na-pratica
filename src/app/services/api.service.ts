@@ -130,7 +130,7 @@ export class ApiService {
   }
 
   updateRevenues(id: string, payload: any): Observable<UpdateRevenues> {
-    return this.httpClient.put<UpdateRevenues>(enviremonent.BASE_URL + '/update/revenues' + id, payload)
+    return this.httpClient.put<UpdateRevenues>(enviremonent.BASE_URL + '/update/revenues/' + id, payload)
       .pipe(
         catchError((err) => {
           if(err.status === 0 && err.status !== 404) {
