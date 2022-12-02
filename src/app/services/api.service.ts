@@ -12,6 +12,7 @@ import { LoginUser } from '../interfaces/loginUser';
 import { DownloadImage } from '../interfaces/downloadImage';
 import { ListRevenues } from '../interfaces/listRevenues';
 import { DeleteRevenues } from '../interfaces/deleteRevenues';
+import { UpdateDebts } from '../interfaces/updateDebts';
 
 @Injectable({
   providedIn: 'root'
@@ -171,6 +172,25 @@ export class ApiService {
             this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
           } else if(err.status === 404) {
             this.utilsService.showError(err.error.message)
+          } else {
+            this.utilsService.showError('Ocorreu um erro no servidor, tente mais tarde!')
+          }
+          return throwError(() => err)
+        })
+      )
+  }
+
+
+  updateDebts(id: string, payload: any): Observable<UpdateDebts> {
+    return this.httpClient.put<UpdateDebts>(enviremonent.BASE_URL + '/update/debts/' + id, payload)
+      .pipe(
+        catchError((err) => {
+          if(err.status === 0 && err.status !== 404) {
+
+            this.utilsService.showError('Ocorreu um erro na aplicação, tente novamente!')
+          } else if(err.status === 404) {
+            this.utilsService.showError(err.error.message)
+
           } else {
             this.utilsService.showError('Ocorreu um erro no servidor, tente mais tarde!')
           }
