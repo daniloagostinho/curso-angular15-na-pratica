@@ -7,6 +7,7 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { ApiService } from 'src/app/services/api.service';
 import { ListDebts } from 'src/app/interfaces/listDebts';
 import { StoreService } from 'src/app/shared/store.service';
+import { UpdateDebtsComponent } from '../update-debts/update-debts.component';
 
 @Component({
   selector: 'app-debts',
@@ -100,6 +101,28 @@ export class DebtsComponent implements OnInit, AfterViewInit {
   applyFilter(event: any) {
     const filesValues = (event.target as HTMLInputElement).value
     this.dataSource.filter = filesValues.trim().toLocaleLowerCase();
+  }
+
+  selectAction(action: string, element: any) {
+    if(action.indexOf('edit.png') != -1) {
+      this.dialog.open(UpdateDebtsComponent, {
+        width: '600px',
+        data: {
+          data: element
+        }
+      })
+    } else {
+      const question = confirm('Tem certeza que deseja excluir essa Receita?')
+
+      if(question) {
+        this.apiService.deleteRevenues(element._id)
+          .subscribe((res: any) => {
+            if(res) {
+              this.storeService.setStoreRevenues(true)
+            }
+          })
+      }
+    }
   }
 }
 
