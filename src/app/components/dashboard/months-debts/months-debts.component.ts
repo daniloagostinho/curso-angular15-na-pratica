@@ -31,6 +31,18 @@ export class MonthsDebtsComponent implements OnInit {
 
   ngOnInit() {
     this.getMonthCurrent();
+
+    this.storeService.getDebtsPrev().subscribe(res => {
+      if(res) {
+        this.prevWithoutRevenues()
+      }
+    })
+
+    this.storeService.getDebtsNext().subscribe(res => {
+      if(res) {
+        this.nextWithoutRevenues()
+      }
+    })
   }
 
   getMonthCurrent() {
@@ -48,7 +60,19 @@ export class MonthsDebtsComponent implements OnInit {
     this.month = this.months[this.i]
     this.storeService.setStoreMonth(this.months[this.i])
     this.storeService.setSearchDebtsByMonth(true)
+    this.storeService.setRevenuesPrev(true)
   }
+
+  prevWithoutRevenues() {
+    this.findIndexElement();
+    this.i = this.i - 1;
+    this.i = this.i % this.months.length;
+    this.month = this.months[this.i]
+    this.storeService.setStoreMonth(this.months[this.i])
+    this.storeService.setSearchDebtsByMonth(true)
+    this.storeService.setSearchRevenuesByMonth(true)
+  }
+
 
   next() {
     this.findIndexElement();
@@ -57,7 +81,19 @@ export class MonthsDebtsComponent implements OnInit {
     this.month = this.months[this.i]
     this.storeService.setStoreMonth(this.months[this.i])
     this.storeService.setSearchDebtsByMonth(true)
+    this.storeService.setRevenuesNext(true)
   }
+
+  nextWithoutRevenues() {
+    this.findIndexElement();
+    this.i = this.i + 1;
+    this.i = this.i % this.months.length;
+    this.month = this.months[this.i]
+    this.storeService.setStoreMonth(this.months[this.i])
+    this.storeService.setSearchDebtsByMonth(true)
+    this.storeService.setSearchRevenuesByMonth(true)
+  }
+
 
   findIndexElement() {
     let returnIndex = this.months.findIndex(item => item === this.month)
