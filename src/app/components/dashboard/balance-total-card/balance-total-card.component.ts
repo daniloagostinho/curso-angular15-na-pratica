@@ -35,8 +35,32 @@ export class BalanceTotalCardComponent implements OnInit {
   getBalanceTotal() {
     this.storeService.getBalanceTotal().subscribe(res => {
       if(res) {
-        console.log('res -->>', res)
+
+
       }
+
     })
   }
+
+  totalDebtGreaterThanIcome() {
+    if(this.totalDebts > this.totalRevues) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  totalLessThanIncome() {
+    if(this.totalDebts < this.totalRevues) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
+
+
+
 }
