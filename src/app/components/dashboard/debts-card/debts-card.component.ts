@@ -18,6 +18,7 @@ export class DebtsCardComponent implements OnInit {
   getTotalDebts() {
     this.storeService.getBalanceDebtsTotal().subscribe(res => {
       if(res) {
+        this.storeService.setDebtsTotal(res.data.total)
         this.createDebts(res)
       }
     })
