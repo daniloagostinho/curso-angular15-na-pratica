@@ -155,8 +155,6 @@ export class DebtsComponent implements OnInit, AfterViewInit {
       }
     }
 
-    console.log('dataBalanceDebts -->> ', dataBalanceDebts)
-
     this.storeService.setBalanceDebtsTotal(dataBalanceDebts)
 
   }

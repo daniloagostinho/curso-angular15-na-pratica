@@ -1,10 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StoreService } from 'src/app/shared/store.service';
 
 @Component({
   selector: 'app-debts-card',
   templateUrl: './debts-card.component.html',
   styleUrls: ['./debts-card.component.scss']
 })
-export class DebtsCardComponent {
+export class DebtsCardComponent implements OnInit {
+  debtsTotal: any;
+  constructor(private storeService: StoreService) {
 
+  }
+  ngOnInit() {
+    this.getTotalDebts();
+  }
+
+  getTotalDebts() {
+    this.storeService.getBalanceDebtsTotal().subscribe(res => {
+      if(res) {
+        this.createDebts(res)
+      }
+    })
+  }
+
+  createDebts(debt: any) {
+    this.debtsTotal = {
+      title: debt.data.title,
+      value: debt.data.total
+    }
+
+    return this.debtsTotal;
+  }
 }
