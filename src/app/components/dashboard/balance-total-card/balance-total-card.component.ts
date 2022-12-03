@@ -23,7 +23,7 @@ export class BalanceTotalCardComponent implements OnInit {
 
   getDebtsTotal() {
     this.storeService.getDebtsTotal().subscribe(res => {
-
+      this.totalDebts = res;
     })
   }
 
