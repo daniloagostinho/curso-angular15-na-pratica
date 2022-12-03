@@ -15,6 +15,7 @@ export class StoreService {
   private revenuesPrev = new BehaviorSubject<boolean>(false)
   private revenuesNext = new BehaviorSubject<boolean>(false)
   private balanceRevenuesTotal = new BehaviorSubject<any>(null)
+  private balanceDebtsTotal = new BehaviorSubject<any>(null)
   constructor() { }
 
   setStoreMonth(value: string) {
@@ -89,5 +90,13 @@ export class StoreService {
 
   getBalanceRevenuesTotal() {
     return this.balanceRevenuesTotal.asObservable();
+  }
+
+  setBalanceDebtsTotal(value: any) {
+    this.balanceDebtsTotal.next(value)
+  }
+
+  getBalanceDebtsTotal() {
+    return this.balanceDebtsTotal.asObservable();
   }
 }
