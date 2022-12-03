@@ -155,11 +155,13 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
     this.totalRevenues = totalArr.reduce((total, num) => total + num, 0)
 
     const dataBalanceRevenues = {
-      datat: {
+      data: {
         title: 'Total Receitas',
         total: this.totalRevenues
       }
     }
+
+    this.storeService.setBalanceRevenuesTotal(dataBalanceRevenues)
 
   }
 

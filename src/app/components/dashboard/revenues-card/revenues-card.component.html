@@ -1,1 +1,6 @@
-<p>revenues-card works!</p>
+<div *ngIf="revenuesTotal">
+  <mat-card class="card">
+    <p>{{revenuesTotal.title}}</p>
+    <h1>{{revenuesTotal.value | currency: "BRL": 'symbol': '1.2-2'}}</h1>
+  </mat-card>
+</div>
