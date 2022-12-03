@@ -19,6 +19,7 @@ export class RevenuesCardComponent implements OnInit {
     this.storeService.getBalanceRevenuesTotal().subscribe(res => {
       if(res) {
         this.storeService.setRevenuesTotal(res.data.total)
+        this.storeService.setBalanceTotal(true);
         this.createRevenues(res)
       }
     })

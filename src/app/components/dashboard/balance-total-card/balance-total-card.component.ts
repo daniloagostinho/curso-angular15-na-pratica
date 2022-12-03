@@ -17,15 +17,26 @@ export class BalanceTotalCardComponent implements OnInit {
   getRevenuesTotal() {
     this.storeService.getRevenuesTotal().subscribe(res => {
       this.totalRevues = res;
-      this.getDebtsTotal();
+      if(this.totalRevues !== null) {
+        this.getDebtsTotal();
+      }
     })
   }
 
   getDebtsTotal() {
     this.storeService.getDebtsTotal().subscribe(res => {
       this.totalDebts = res;
+      if(this.totalDebts !== null) {
+        this.getBalanceTotal();
+      }
     })
   }
 
-
+  getBalanceTotal() {
+    this.storeService.getBalanceTotal().subscribe(res => {
+      if(res) {
+        console.log('res -->>', res)
+      }
+    })
+  }
 }
