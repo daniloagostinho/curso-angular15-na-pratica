@@ -30,6 +30,7 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
     'acoes'
   ]
   @ViewChild('paginator') paginator!: MatPaginator;
+  totalRevenues: any;
   constructor(private dialog: MatDialog,
     private storeService: StoreService,
     private localStorageService: LocalstorageService,
@@ -74,6 +75,7 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
         this.emptyResult = true;
 
         this.arrRevenues = []
+        this.totalExpense();
       } else {
         this.emptyResult = false;
         this.arrRevenues = arr;
@@ -84,6 +86,9 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
         res.result.forEach((element: any) => {
           arr.push(element.user.month.listMonth);
         })
+
+        this.totalExpense();
+
       }
 
       setTimeout(() => {
@@ -137,6 +142,25 @@ export class RevenuesComponent implements OnInit, AfterViewInit {
     let dateString = date.toLocaleDateString('pt-br', {month: 'long'})
     let letterDateString = dateString[0].toUpperCase() + dateString.substring(1)
     this.monthSelelected ==  undefined ? (this.monthSelelected = letterDateString) : this.monthSelelected
+  }
+
+  generateTotalExpenseArray() {
+    let total = this.arrRevenues.map(total => Number(total.value))
+    return total;
+  }
+
+  totalExpense() {
+    let totalArr = this.generateTotalExpenseArray();
+
+    this.totalRevenues = totalArr.reduce((total, num) => total + num, 0)
+
+    const dataBalanceRevenues = {
+      datat: {
+        title: 'Total Receitas',
+        total: this.totalRevenues
+      }
+    }
+
   }
 
 }
