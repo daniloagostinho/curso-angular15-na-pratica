@@ -79,8 +79,8 @@ export class DebtsComponent implements OnInit, AfterViewInit {
 
       if(res.result.length === 0) {
         this.emptyResult = true;
-        this.totalExpense();
         this.arrDebts = []
+        this.totalExpense();
       } else {
         this.emptyResult = false;
         this.arrDebts = arr;

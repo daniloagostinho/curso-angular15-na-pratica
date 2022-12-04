@@ -1,6 +1,8 @@
 <div *ngIf="showBalanceTotal">
   <mat-card
-    class="card">
+    class="card"
+    [class.negative]="hasNegative"
+    [class.postive]="hasPositive">
     <p>{{showBalanceTotal.title}}</p>
     <h1>{{showBalanceTotal.value | currency: "BRL": "symbol": "1.2-2"}}</h1>
   </mat-card>

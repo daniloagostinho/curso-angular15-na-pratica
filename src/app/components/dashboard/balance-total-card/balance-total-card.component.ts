@@ -13,6 +13,8 @@ export class BalanceTotalCardComponent implements OnInit {
   hasNegative = true;
   balanceTotalMinus: any;
   showBalanceTotal: any;
+  balanceTotalPlus: any;
+  balanceTotalZero: any;
   constructor(private storeService: StoreService) {}
   ngOnInit() {
     this.getRevenuesTotal();
@@ -43,14 +45,32 @@ export class BalanceTotalCardComponent implements OnInit {
           const result = Number(this.totalDebts) - Number(this.totalRevues)
           this.hasPositive = true;
           this.hasNegative = false;
-          this.totalDebtMinusIncome(result)
+          this.setDebtMinusIncome(result)
+        } else if(this.totalDebtGreaterThanIcome()) {
+          const result = Number(this.totalDebts) - Number(this.totalRevues)
+          this.hasNegative = true;
+          this.hasPositive = false;
+          this.setDebtPlusIncome(result)
+        } else if(this.totalEqualsZero()) {
+          this.hasNegative = false;
+          this.hasPositive = false;
+          this.setBalanceZero();
         }
       }
 
     })
   }
 
-  totalDebtMinusIncome(result: number) {
+  setBalanceZero() {
+    this.balanceTotalZero = {
+      title: 'Saldo Total',
+      value: 0
+    }
+
+    this.showBalanceTotal = this.balanceTotalZero;
+  }
+
+  setDebtMinusIncome(result: number) {
     this.balanceTotalMinus = {
       title: 'Saldo Total',
       value: Math.abs(result)
@@ -58,6 +78,15 @@ export class BalanceTotalCardComponent implements OnInit {
 
     this.showBalanceTotal = this.balanceTotalMinus;
     console.log(this.showBalanceTotal)
+  }
+
+  setDebtPlusIncome(result: any) {
+    this.balanceTotalPlus = {
+      title: 'Saldo Total',
+      value: -Math.abs(result)
+    }
+
+    this.showBalanceTotal = this.balanceTotalPlus;
   }
   totalDebtGreaterThanIcome() {
     if(this.totalDebts > this.totalRevues) {
