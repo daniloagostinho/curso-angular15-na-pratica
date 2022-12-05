@@ -46,27 +46,32 @@ export class BalanceTotalCardComponent implements OnInit {
           this.hasPositive = true;
           this.hasNegative = false;
           this.setDebtMinusIncome(result)
+          this.setDebtMinusIncomeVariable();
         } else if(this.totalDebtGreaterThanIcome()) {
           const result = Number(this.totalDebts) - Number(this.totalRevues)
           this.hasNegative = true;
           this.hasPositive = false;
           this.setDebtPlusIncome(result)
+          this.setDebtPlusIncomeVariable();
         } else if(this.totalEqualsZero()) {
           this.hasNegative = false;
           this.hasPositive = false;
-          this.setBalanceZero();
+          this.setDebtBalanceZero();
+          this.setDetBalanceZeroVariable();
         }
       }
 
     })
   }
 
-  setBalanceZero() {
+  setDebtBalanceZero() {
     this.balanceTotalZero = {
       title: 'Saldo Total',
       value: 0
     }
+  }
 
+  setDetBalanceZeroVariable() {
     this.showBalanceTotal = this.balanceTotalZero;
   }
 
@@ -75,9 +80,10 @@ export class BalanceTotalCardComponent implements OnInit {
       title: 'Saldo Total',
       value: Math.abs(result)
     }
+  }
 
+  setDebtMinusIncomeVariable() {
     this.showBalanceTotal = this.balanceTotalMinus;
-    console.log(this.showBalanceTotal)
   }
 
   setDebtPlusIncome(result: any) {
@@ -85,7 +91,9 @@ export class BalanceTotalCardComponent implements OnInit {
       title: 'Saldo Total',
       value: -Math.abs(result)
     }
+  }
 
+  setDebtPlusIncomeVariable() {
     this.showBalanceTotal = this.balanceTotalPlus;
   }
   totalDebtGreaterThanIcome() {
@@ -112,7 +120,4 @@ export class BalanceTotalCardComponent implements OnInit {
       return false
     }
   }
-
-
-
 }
