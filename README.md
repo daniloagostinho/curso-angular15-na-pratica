@@ -202,3 +202,5 @@ a aplicação estara disponível no endereço:
 ### Conclusão
  - Apresentação final;
  - Para onde ir agora?.
+
+Este curso pode ser adquirido clicando [aqui]().
