@@ -122,3 +122,83 @@ a aplicação estara disponível no endereço:
  - Criando serviço de atualização de receitas;
  - Criando método de submit;
  - Exibindo mensagem quando não existirem receitas.
+
+## Seção 7
+### Trabalhando no componente meses de receitas
+ - Introdução da seção;
+ - Conteúdo da próxima aula;
+ - Criando HTML e CSS do componente;
+ - Trabalhando no método de buscar receitas de meses anteriores;
+ - Trabalhando no método de buscar receitas dos próximos meses.
+
+## Seção 8
+### Trabalhando no componente de dívidas
+ - Introdução da seção;
+ - Conteúdo da próxima aula;
+ - Criando HTML e CSS do componente de dívidas;
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de adicionar dívidas;
+ - Criando o formulário do componente de adicionar dívidas;
+ - Criando serviço de cadastro de dívidas;
+ - Trabalhando no método de submit parte 1;
+ - Trabalhando no método de submit parte 2;
+ - Criando serviço de listagem de dívidas;
+ - Trabalhando no método de listagem de dívidas;
+ - Listando as dívidas na tabela;
+ - Criando a busca de dívidas;
+ - Criando o componente de atualizaçao de dívidas;
+ - Conteúdo da próxima aula;
+ - Criando formulário do modal de atualização das dívidas;
+ - Preenchendo os campos do formulário da modal de atualização de dívidas;
+ - Criando serviço de atualização de dívidas;
+ - Trabalhando no método submit;
+ - Criando o método de que define o mês atual para o componente de receitas;
+ - Criando serviço de exclusão de dívidas;
+ - Trabalhando na exclusão das dívidas;
+ - Conteúdo da próxima aula;
+ - Criando o componente de meses;
+- Interligando componentes de meses;
+- Entendendo melhor os métodos singleton criado.
+
+## Seção 9
+### Trabalhando no componente de saldo de receitas
+ - Introdução da seção;
+ - Criando método para retornar total de receitas;
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de saldo de receitas.
+
+## Seção 10
+### Trabalhando no componente de saldo de dívidas
+ - Introdução da seção;
+ - Criando método para retornar saldo total de dívidas;
+ - Conteúdo da próxima aula;
+ - Trabalhando no componente de saldo de dívidas.
+
+## Seção 11
+### Trabalhando no componente de saldo total
+ - Introdução da seção;
+ - Conteúdo da próxima aula;
+ - Criando HTML e CSS do componente saldo total;
+ - Criando serviço singleton para compartilhar o saldo total das receitas;
+ - Criando serviço singleton para compartilhar o saldo total das dívidas;
+ - Criando serviço para notificar saldo total;
+ - Criando métodos para verificar se dívidas são maiores/menores do que as receitas;
+ - Trabalhando no método de saldo total parte 1;
+ - Trabalhando no método de saldo total parte 2;
+ - Criando métodos que seta o valores para variavel showBalanceTotal;
+ - Corrigindo classe saldo positivo;
+ - Tratando quando saldo de receitas é igual a dívidas.
+
+## Seção 12
+### Conteúdo adicional
+ - Introdução da seção;
+ - Criando serviço para retornar informações do usuário;
+ - Utiliando o serviço que lista informações do usuário;
+ - Criando interceptor para adicionar token as requisições;
+ - Corrigindo margin dos formulários;
+ - Criando HTML e CSS do footer.
+
+## Seção 13
+### Conclusão
+ - Apresentação final;
+ - Para onde ir agora?.
