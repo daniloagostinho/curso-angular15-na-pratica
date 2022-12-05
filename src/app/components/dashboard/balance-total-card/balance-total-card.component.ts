@@ -40,6 +40,7 @@ export class BalanceTotalCardComponent implements OnInit {
 
   getBalanceTotal() {
     this.storeService.getBalanceTotal().subscribe(res => {
+      debugger;
       if(res) {
         if(this.totalDebtLessThanIncome()) {
           const result = Number(this.totalDebts) - Number(this.totalRevues)
@@ -53,6 +54,11 @@ export class BalanceTotalCardComponent implements OnInit {
           this.hasPositive = false;
           this.setDebtPlusIncome(result)
           this.setDebtPlusIncomeVariable();
+        } else if(this.totalDebtEqualRevenue()) {
+          this.setDebtBalanceZero();
+          this.setDetBalanceZeroVariable();
+          this.hasPositive = false;
+          this.hasNegative = false;
         } else if(this.totalEqualsZero()) {
           this.hasNegative = false;
           this.hasPositive = false;
@@ -96,6 +102,7 @@ export class BalanceTotalCardComponent implements OnInit {
   setDebtPlusIncomeVariable() {
     this.showBalanceTotal = this.balanceTotalPlus;
   }
+
   totalDebtGreaterThanIcome() {
     if(this.totalDebts > this.totalRevues) {
       return true;
@@ -118,6 +125,14 @@ export class BalanceTotalCardComponent implements OnInit {
       return true;
     } else {
       return false
+    }
+  }
+
+  totalDebtEqualRevenue() {
+    if(this.totalDebts == this.totalRevues) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
