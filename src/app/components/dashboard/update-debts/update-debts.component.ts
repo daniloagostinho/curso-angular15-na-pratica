@@ -29,7 +29,6 @@ export class UpdateDebtsComponent implements OnInit {
   month!: string;
 
   ngOnInit() {
-    console.log(this.data)
     this.initForm();
     this.fillData();
     this.defineInitMonth();

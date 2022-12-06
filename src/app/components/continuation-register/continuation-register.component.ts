@@ -29,7 +29,6 @@ export class ContinuationRegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.data)
     this.initForm();
   }
 

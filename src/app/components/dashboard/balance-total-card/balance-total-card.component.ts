@@ -40,7 +40,6 @@ export class BalanceTotalCardComponent implements OnInit {
 
   getBalanceTotal() {
     this.storeService.getBalanceTotal().subscribe(res => {
-      debugger;
       if(res) {
         if(this.totalDebtLessThanIncome()) {
           const result = Number(this.totalDebts) - Number(this.totalRevues)

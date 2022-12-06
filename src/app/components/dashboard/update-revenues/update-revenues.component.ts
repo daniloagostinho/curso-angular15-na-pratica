@@ -29,7 +29,6 @@ export class UpdateRevenuesComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data)
     this.initForm();
     this.fillData();
     this.preventFutureDate();

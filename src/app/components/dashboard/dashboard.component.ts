@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   getUser() {
     const {_id} = this.localStorageService.getLocalStorage('userInfo')
-    this.apiService.getUser(_id).subscribe(res => console.log(res))
+    this.apiService.getUser(_id).subscribe()
 
   }
 }
