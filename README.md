@@ -203,4 +203,4 @@ a aplicação estara disponível no endereço:
  - Apresentação final;
  - Para onde ir agora?.
 
-Este curso pode ser adquirido clicando [aqui]().
+Este curso pode ser adquirido clicando [aqui](https://www.udemy.com/course/curso-angular-15-na-pratica/).
