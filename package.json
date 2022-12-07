@@ -1,6 +1,10 @@
 {
   "name": "curso-angular15-na-pratica",
   "version": "0.0.0",
+  "engines": {
+    "node": "18.12.1",
+    "mpm": "8.19.2"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
